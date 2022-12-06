@@ -8,32 +8,59 @@ namespace OOP_Inheritance_and_Polymorphism
 {
     internal class Vehicle
     {
-        //Auto-gen Properties
-        public string Registration { get; set; }//use prop tab tab to create this line of code
-        public string Model { get; set; }
-        public string Make { get; set; }
-        public string Colour { get; set; }
-        public int NoOfWheels { get; set; }
 
-        public Vehicle(string registration, string model, string make, string colour, int noOfWheels)//Using control and . and then you can select create constructor
+        private string registration;
+        private string model;
+        private string make;
+        private string colour;
+        private int noOfWheels;
+        private Driver driver;//This is aggregation
+
+        //Auto-gen Properties
+        public string Registration { get => registration; set => registration = value; }//use prop tab tab to create this line of code
+        public string Model { get => model; set => model = value; }
+        public string Make { get => make; set => make = value; }
+        public string Colour { get => colour; set => colour = value; }
+        public Driver Driver { get => driver; set => driver = value; }
+        public int NoOfWheels
+        {
+            get => noOfWheels;
+            set
+            {
+                if (value > 0 && value < 8)
+                {
+                    noOfWheels = value;
+                }
+            }
+        }
+
+        public Vehicle(
+            string registration,
+            string model,
+            string make,
+            string colour,
+            Driver driver,
+            int noOfWheels)
         {
             Registration = registration;
             Model = model;
             Make = make;
             Colour = colour;
+            Driver = driver;
             NoOfWheels = noOfWheels;
         }
 
-        public override string ToString()
+        public override string? ToString()
         {
             return
                 $"\n======================================" +
-                $"\nCar reg: {Registration}" +
-                $"\nCar colour: {Colour}" +
-                $"\nCar model: {Model}" +
-                $"\nCar make: {Make}" +
-                $"\nCar number of weels: {NoOfWheels}" +
-                $"\n======================================";
+                $"\nCar registration: {registration}" +
+                $"\nCar colour: {colour}" +
+                $"\nCar model: {model}" +
+                $"\nCar make: {make}" +
+                $"\nCar number of wheels: {noOfWheels}" +
+                $"\n======================================" +
+                $"\nCar driver: {driver}";
         }
     }
 }
