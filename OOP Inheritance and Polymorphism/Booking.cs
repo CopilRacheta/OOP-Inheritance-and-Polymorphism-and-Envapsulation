@@ -19,17 +19,14 @@ namespace OOP_Inheritance_and_Polymorphism
         public string Type { get=>type; set=>type=value; }
         public DateTime Date { get=>date; set=>date=value; }
 
-        public Booking(
-            Vehicle car, 
-            string type, 
-            DateTime date)
+        public Booking(Vehicle car, string type, DateTime date)
         {
+           
             ID = Guid.NewGuid();
             Car = car;
             Type = type;
             Date = date;
         }
-
 
         public override string? ToString()
         {
